@@ -1,0 +1,15 @@
+diff --git a/phoenix/Makefile b/phoenix/Makefile
+index 957e361..088940c 100644
+--- a/phoenix/Makefile
++++ b/phoenix/Makefile
+@@ -13,8 +13,8 @@ else
+   endif
+ 
+   ifeq ($(phoenix),gtk)
+-    phoenixflags = $(cppflags) $(flags) -DPHOENIX_GTK `pkg-config --cflags gtk+-2.0`
+-    phoenixlink = `pkg-config --libs gtk+-2.0`
++    phoenixflags = $(cppflags) $(flags) -DPHOENIX_GTK `pkg-config --cflags gtk+-2.0 x11`
++    phoenixlink = `pkg-config --libs gtk+-2.0 x11`
+   endif
+ 
+   ifeq ($(phoenix),qt)

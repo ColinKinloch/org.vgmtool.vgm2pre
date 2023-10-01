@@ -1,0 +1,27 @@
+id: org.vgmtool.vgm2pre
+runtime: org.freedesktop.Platform
+runtime-version: '23.08'
+sdk: org.freedesktop.Sdk
+command: vgm2pre
+
+finish-args:
+  - --share=ipc
+  - --socket=x11
+  - --filesystem=host
+
+modules:
+  - shared-modules/gtk2/gtk2.json
+
+  - name: vgm2pre
+    buildsystem: simple
+    build-commands:
+      - cd vgm2pre && make
+      - install vgm2pre/vgm2pre "${FLATPAK_DEST}/bin"
+    sources:
+      - type: git
+        url: https://github.com/vgmtool/vgm2pre.git
+        branch: master
+      - type: patch
+        path: x11_link.patch
+      - type: patch
+        path: no_dir.patch
